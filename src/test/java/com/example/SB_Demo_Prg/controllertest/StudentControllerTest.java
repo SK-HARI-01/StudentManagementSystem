@@ -18,6 +18,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(StudentController.class)
+
 public class StudentControllerTest {
 
     @Autowired
@@ -29,8 +30,7 @@ public class StudentControllerTest {
     @Test
     public void testViewAllStudents() throws Exception {
         when(studentRepo.findAll()).thenReturn(List.of(
-                new StudentDetailsEntity("A", "R01", "CSE", "9.0", "92")
-        ));
+                new StudentDetailsEntity("A", "R01", "CSE", "9.0", "92")));
 
         mockMvc.perform(get("/student-details/Student-db-details"))
                 .andExpect(status().isOk())
@@ -77,4 +77,3 @@ public class StudentControllerTest {
                 .andExpect(redirectedUrl("/student-details/Student-db-details"));
     }
 }
-
